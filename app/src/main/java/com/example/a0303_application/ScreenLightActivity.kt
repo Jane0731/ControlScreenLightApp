@@ -8,7 +8,6 @@ import com.example.a0303_application.databinding.ActivityScreenLightBinding
 
 class ScreenLightActivity : AppCompatActivity() {
     private lateinit var binding:ActivityScreenLightBinding
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding=ActivityScreenLightBinding.inflate(layoutInflater)
@@ -18,43 +17,35 @@ class ScreenLightActivity : AppCompatActivity() {
                 setScreenLight(p1.toFloat()/100)
                 Log.d("持動","float is"+p1.toFloat()/100)
             }
-
             override fun onStartTrackingTouch(p0: SeekBar?) {
             }
-
             override fun onStopTrackingTouch(p0: SeekBar?) {
             }
         })
         binding.radioGroup.setOnCheckedChangeListener{radioGroup,i->
             if(i==R.id.radioButton){
-                Log.d("button","0%")
                 setScreenLight(0.0f)
             }
             else if(i==R.id.radioButton2){
-                Log.d("button","25%")
                 setScreenLight(0.25f)
             }
             else if(i==R.id.radioButton3){
-                Log.d("button","50%")
                 setScreenLight(0.50f)
             }
             else if(i==R.id.radioButton4){
-                Log.d("button","75%")
                 setScreenLight(0.75f)
             }
             else if(i==R.id.radioButton5){
-                Log.d("button","100%")
                 setScreenLight(1.0f)
             }
             else{
-                Log.d("button","啥都沒有")
+                //
             }
         }
     }
 
     private fun setScreenLight(lightValue:Float){
         val lp = window.attributes
-
         //screenBrightness的值範圍為0~1 單位為float
         lp.screenBrightness = java.lang.Float.valueOf(lightValue)
         window.attributes = lp
