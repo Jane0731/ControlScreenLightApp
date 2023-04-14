@@ -19,7 +19,7 @@ class MenuActivity : AppCompatActivity() {
                 when (p2) {
                     0 -> onClickScreenLight()
                     1 -> onClickFlashlight()
-                    2 -> "Empty"
+                    2 -> onClickSensorlight()
                 }
             }
         }
@@ -30,6 +30,10 @@ class MenuActivity : AppCompatActivity() {
     }
     private fun onClickFlashlight(){
         val i= Intent(this,FlashlightActivity::class.java)
+        startActivity(i)
+    }
+    private fun onClickSensorlight(){
+        val i= Intent(this,SensorLightActivity::class.java)
         startActivity(i)
     }
 }
