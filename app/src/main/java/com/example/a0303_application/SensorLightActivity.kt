@@ -25,16 +25,31 @@ class SensorLightActivity : AppCompatActivity(),SensorEventListener {
         super.onCreate(savedInstanceState)
         binding= ActivitySensorLightBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        lightText=binding.textView4
+        lightProgressbar=binding.lightProgressBar
+        sensorManager=getSystemService(Context.SENSOR_SERVICE) as SensorManager
+        light=sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT)
     }
 
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onSensorChanged(p0: SensorEvent) {
-
+        val lightValue=p0.values[0]
+        lightText.text=lightValue.toString()
+        lightProgressbar.setProgress(lightValue.toInt())
+        setScreenLight(lightValue/255.0f)
     }
 
     override fun onAccuracyChanged(p0: Sensor, p1: Int) {
     }
+    override fun onResume(){
+        super.onResume()
+        sensorManager.registerListener(this,light,SensorManager.SENSOR_DELAY_GAME)
+    }
 
+    override fun onPause() {
+        super.onPause()
+        sensorManager.unregisterListener(this)
+    }
     private fun setScreenLight(lightValue:Float){
         val lp = window.attributes
         //screenBrightness的值範圍為0~1 單位為float

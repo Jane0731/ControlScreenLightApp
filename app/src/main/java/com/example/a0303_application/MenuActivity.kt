@@ -7,7 +7,7 @@ import android.view.View
 import android.widget.*
 
 class MenuActivity : AppCompatActivity() {
-    val menu= arrayOf("螢幕亮度功能","手電筒功能","跑馬燈")
+    val menu= arrayOf("螢幕亮度功能","手電筒功能","光感測器應用","AlertDialog及Timer的應用")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu)
@@ -20,6 +20,7 @@ class MenuActivity : AppCompatActivity() {
                     0 -> onClickScreenLight()
                     1 -> onClickFlashlight()
                     2 -> onClickSensorlight()
+                    3 -> onClickAlertDialogAndTimer()
                 }
             }
         }
@@ -34,6 +35,10 @@ class MenuActivity : AppCompatActivity() {
     }
     private fun onClickSensorlight(){
         val i= Intent(this,SensorLightActivity::class.java)
+        startActivity(i)
+    }
+    private fun onClickAlertDialogAndTimer(){
+        val i= Intent(this,AlertDialogAndTimerActivity::class.java)
         startActivity(i)
     }
 }
