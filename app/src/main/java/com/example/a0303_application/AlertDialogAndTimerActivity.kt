@@ -17,6 +17,20 @@ class AlertDialogAndTimerActivity : AppCompatActivity() {
         setContentView(binding.root)
         timerCount=binding.info
 
-        
+        val timer =object : CountDownTimer(30000, 1000) {
+
+            override fun onFinish() {
+                AlertDialog.Builder(this@AlertDialogAndTimerActivity)
+                    .setMessage("倒數結束")
+                    .setTitle("倒數通知")
+                    .setPositiveButton("ok",null)
+                    .show()
+            }
+
+            override fun onTick(millisUntilFinished: Long) {
+                timerCount.setText("${millisUntilFinished/1000}")
+            }
+        }
+        binding.startTimer.setOnClickListener {timer.start()}
     }
 }
