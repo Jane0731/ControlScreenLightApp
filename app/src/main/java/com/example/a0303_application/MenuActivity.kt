@@ -7,7 +7,7 @@ import android.view.View
 import android.widget.*
 
 class MenuActivity : AppCompatActivity() {
-    val menu= arrayOf("螢幕亮度功能","手電筒功能","光感測器應用","AlertDialog及Timer的應用","接OpenData的應用")
+    val menu= arrayOf("螢幕亮度功能","手電筒功能","光感測器應用","AlertDialog及Timer的應用","接OpenData的應用","Service")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu)
@@ -22,6 +22,7 @@ class MenuActivity : AppCompatActivity() {
                     2 -> onClickSensorlight()
                     3 -> onClickAlertDialogAndTimer()
                     4 -> onClickOpenData()
+                    5 -> onClickService()
                 }
             }
         }
@@ -45,5 +46,10 @@ class MenuActivity : AppCompatActivity() {
     private fun onClickOpenData(){
         val i= Intent(this,OpenDataActivity::class.java)
         startActivity(i)
+    }
+    private fun onClickService(){
+        val i= Intent(this,ServiceActivity::class.java)
+        startActivity(i)
+
     }
 }
