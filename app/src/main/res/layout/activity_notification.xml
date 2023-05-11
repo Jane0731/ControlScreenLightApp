@@ -11,11 +11,11 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="160dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="164dp"
         android:text="Notification 應用"
         android:textColor="#602828"
-        android:textSize="48sp"
+        android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -24,12 +24,11 @@
         android:id="@+id/showNo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="120dp"
-        android:layout_marginTop="488dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="416dp"
         android:text="Send Notification"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
     </Button>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

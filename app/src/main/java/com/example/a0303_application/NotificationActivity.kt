@@ -23,12 +23,9 @@ class NotificationActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityNotificationBinding
     private lateinit var showNotificationBtn:Button
-    private companion object{
-        private const val CHANNEL_ID="channel01"
-    }
+    private val CHANNEL_ID:String="channel01"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityNotificationBinding.inflate(layoutInflater)
         setContentView(binding.root)
         showNotificationBtn=binding.showNo
@@ -41,13 +38,14 @@ class NotificationActivity : AppCompatActivity() {
         val vibrateEffect: LongArray = longArrayOf(3000, 3000, 3000, 3000);
         val date=Date()
         val notificationId=SimpleDateFormat("ddHHmmss", Locale.CHINESE).format(date).toInt()
-        val notificationBuilder=NotificationCompat.Builder(this,"$CHANNEL_ID")
+        val notificationBuilder=NotificationCompat.Builder(this,CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_notification)
             .setContentTitle("提醒標題")
             .setContentText("提醒內容")
             .setAutoCancel(true)
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             .setVibrate(vibrateEffect)
+            .setLights(Color.GREEN,1000,1000)
         val notificationManagerCompat=NotificationManagerCompat.from(this)
         notificationManagerCompat.notify(notificationId,notificationBuilder.build())
     }
@@ -59,12 +57,9 @@ class NotificationActivity : AppCompatActivity() {
             val description="My notification channel description"
             notificationChannel.description=description
             notificationChannel.enableLights(true)
-            notificationChannel.lightColor=Color.RED
+            notificationChannel.enableVibration(true)
             val notificationManager=getSystemService(NOTIFICATION_SERVICE) as NotificationManager
             notificationManager.createNotificationChannel(notificationChannel)
-
         }
     }
-
-
 }
