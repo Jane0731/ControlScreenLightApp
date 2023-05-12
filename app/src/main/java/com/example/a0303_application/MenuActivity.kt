@@ -7,7 +7,7 @@ import android.view.View
 import android.widget.*
 
 class MenuActivity : AppCompatActivity() {
-    val menu= arrayOf("螢幕亮度功能","手電筒功能","光感測器應用","AlertDialog及Timer的應用","接OpenData的應用","Service","Notification","DatePicker")
+    val menu= arrayOf("螢幕亮度功能","手電筒功能","光感測器應用","AlertDialog及Timer的應用","接OpenData的應用","Service","Notification","DatePicker","SharePrefence")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu)
@@ -25,7 +25,7 @@ class MenuActivity : AppCompatActivity() {
                     5 -> onClickService()
                     6 -> onClickNotification()
                     7 -> onClickDatePicker()
-
+                    8 -> onClickSharePrefence()
                 }
             }
         }
@@ -60,6 +60,10 @@ class MenuActivity : AppCompatActivity() {
     }
     private fun onClickDatePicker(){
         val i= Intent(this,DatepickerActivity::class.java)
+        startActivity(i)
+    }
+    private fun onClickSharePrefence(){
+        val i= Intent(this,ShareprefenceActivity::class.java)
         startActivity(i)
     }
 }
